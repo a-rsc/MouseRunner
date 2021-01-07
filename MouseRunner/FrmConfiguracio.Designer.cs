@@ -63,22 +63,24 @@ namespace MouseRunner
             this.LabelAltura.Margin = new System.Windows.Forms.Padding(3);
             this.LabelAltura.Name = "LabelAltura";
             this.LabelAltura.Padding = new System.Windows.Forms.Padding(3);
-            this.LabelAltura.Size = new System.Drawing.Size(134, 20);
+            this.LabelAltura.Size = new System.Drawing.Size(150, 20);
             this.LabelAltura.TabIndex = 0;
-            this.LabelAltura.Text = "Altura (cm)";
+            this.LabelAltura.Text = "Altura (cm) - max: 1000";
             this.LabelAltura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TextBoxAltura
             // 
             this.TextBoxAltura.BackColor = System.Drawing.Color.White;
             this.TextBoxAltura.CausesValidation = false;
-            this.TextBoxAltura.Location = new System.Drawing.Point(150, 60);
+            this.TextBoxAltura.Location = new System.Drawing.Point(175, 60);
+            this.TextBoxAltura.MaxLength = 4;
             this.TextBoxAltura.Name = "TextBoxAltura";
             this.TextBoxAltura.ShortcutsEnabled = false;
             this.TextBoxAltura.Size = new System.Drawing.Size(80, 20);
             this.TextBoxAltura.TabIndex = 2;
             this.TextBoxAltura.Text = "0";
             this.TextBoxAltura.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TextBoxAltura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // LabelAmplada
             // 
@@ -87,25 +89,28 @@ namespace MouseRunner
             this.LabelAmplada.Margin = new System.Windows.Forms.Padding(3);
             this.LabelAmplada.Name = "LabelAmplada";
             this.LabelAmplada.Padding = new System.Windows.Forms.Padding(3);
-            this.LabelAmplada.Size = new System.Drawing.Size(134, 20);
+            this.LabelAmplada.Size = new System.Drawing.Size(150, 20);
             this.LabelAmplada.TabIndex = 0;
-            this.LabelAmplada.Text = "Amplada (cm)";
+            this.LabelAmplada.Text = "Amplada (cm) - max: 1000";
             this.LabelAmplada.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TextBoxAmplada
             // 
             this.TextBoxAmplada.BackColor = System.Drawing.Color.White;
             this.TextBoxAmplada.CausesValidation = false;
-            this.TextBoxAmplada.Location = new System.Drawing.Point(150, 20);
+            this.TextBoxAmplada.Location = new System.Drawing.Point(175, 20);
+            this.TextBoxAmplada.MaxLength = 4;
             this.TextBoxAmplada.Name = "TextBoxAmplada";
             this.TextBoxAmplada.ShortcutsEnabled = false;
             this.TextBoxAmplada.Size = new System.Drawing.Size(80, 20);
             this.TextBoxAmplada.TabIndex = 1;
             this.TextBoxAmplada.Text = "0";
             this.TextBoxAmplada.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TextBoxAmplada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // ButtonAccept
             // 
+            this.ButtonAccept.CausesValidation = false;
             this.ButtonAccept.Location = new System.Drawing.Point(10, 120);
             this.ButtonAccept.Name = "ButtonAccept";
             this.ButtonAccept.Size = new System.Drawing.Size(150, 25);
@@ -116,6 +121,7 @@ namespace MouseRunner
             // 
             // ButtonCancel
             // 
+            this.ButtonCancel.CausesValidation = false;
             this.ButtonCancel.Location = new System.Drawing.Point(220, 120);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(150, 25);
