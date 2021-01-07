@@ -12,21 +12,21 @@ namespace MouseRunner.Classes
     // Only one instance
     public sealed class ClDades
     {
-        private readonly string path = Path.Combine(Application.StartupPath, @"..\..\Resources\Dades.xml");
-        
+        private readonly string fileName = "Dades.xml";
+        private readonly string path;
+
         private readonly XmlDocument xmlDoc;
         private XmlNode mouseNode, teclatNode;
 
         private string metres = "0"; // valors per defecte - 0
-        private string numA = "0"; // valors per defecte - 0
-        private string numE = "0"; // valors per defecte - 0
-        private string numI = "0"; // valors per defecte - 0
-        private string numO = "0"; // valors per defecte - 0
-        private string numU = "0"; // valors per defecte - 0
+        private string numA = "0", numE = "0", numI = "0", numO = "0", numU = "0"; // valors per defecte - 0
+
+        public string FileName => fileName;
 
         public ClDades()
         {
             xmlDoc=new XmlDocument();
+            path=Path.Combine(Application.StartupPath, string.Concat(@"..\..\Resources\", FileName));
 
             try
             {
@@ -52,6 +52,8 @@ namespace MouseRunner.Classes
             }
             catch(Exception)
             {
+                // TODO: Si l'arxiu no es trobés el crearia
+                // nouXML();
             }
         }
 
@@ -66,6 +68,11 @@ namespace MouseRunner.Classes
 
             xmlDoc.Save(path);
         }
+
+        //private void nouXML()
+        //{
+
+        //}
 
         public string Metres { get => metres; set => metres=value; }
         public string NumA { get => numA; set => numA=value; }

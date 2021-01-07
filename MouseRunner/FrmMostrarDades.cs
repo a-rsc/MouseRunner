@@ -190,8 +190,8 @@ namespace MouseRunner
 
             double longitud = Double.Parse(TextBoxM.Text);
             double incrementX, incrementY;
-            double screenWidthCm = Double.Parse(clConfiguracio.Amplada);
-            double screenHeightCm = Double.Parse(clConfiguracio.Altura);
+            double screenWidthCm = Double.Parse(clConfiguracio.Caracteristiques["amplada"]);
+            double screenHeightCm = Double.Parse(clConfiguracio.Caracteristiques["altura"]);
 
             if(ClApi.GetCursorPos(ref posMouseNext.point))
             {

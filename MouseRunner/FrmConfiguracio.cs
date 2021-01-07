@@ -22,16 +22,16 @@ namespace MouseRunner
 
             this.clConfiguracio=clConfiguracio;
 
-            TextBoxAmplada.Text=clConfiguracio.Amplada;
-            TextBoxAltura.Text=clConfiguracio.Altura;
+            TextBoxAmplada.Text=clConfiguracio.Caracteristiques["amplada"];
+            TextBoxAltura.Text=clConfiguracio.Caracteristiques["altura"];
         }
 
         private void ButtonAccept_Click(object sender, EventArgs e)
         {
             if(ValidateForm())
             {
-                clConfiguracio.Amplada=TextBoxAmplada.Text;
-                clConfiguracio.Altura=TextBoxAltura.Text;
+                clConfiguracio.Caracteristiques["amplada"]=TextBoxAmplada.Text;
+                clConfiguracio.Caracteristiques["altura"]=TextBoxAltura.Text;
                 clConfiguracio.Save();
                 Close();
             }

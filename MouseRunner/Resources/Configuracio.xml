@@ -1,5 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Característiques pantalla projectada: amplada i altura (cm)-->
 <configuracio>
-  <amplada>1000</amplada>
-  <altura>1000</altura>
+  <pantalla>
+    <amplada>50</amplada>
+    <altura>30</altura>
+  </pantalla>
 </configuracio>
