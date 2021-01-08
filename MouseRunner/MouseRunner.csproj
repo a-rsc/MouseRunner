@@ -105,6 +105,7 @@
   <ItemGroup>
     <Content Include="Resources\Dades.xml" />
     <Content Include="Resources\Configuracio.xml" />
+    <Content Include="Resources\Notas-Jaume.txt" />
     <Content Include="Roadrunner.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

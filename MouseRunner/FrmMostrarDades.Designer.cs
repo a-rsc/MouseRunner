@@ -59,6 +59,7 @@ namespace MouseRunner
             this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.Sortir = new System.Windows.Forms.ToolStripMenuItem();
             this.TmMouse = new System.Windows.Forms.Timer(this.components);
+            this.TmTeclat = new System.Windows.Forms.Timer(this.components);
             this.GroupBox1.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.ContextMenuStrip.SuspendLayout();
@@ -402,6 +403,12 @@ namespace MouseRunner
             this.TmMouse.Interval = 20;
             this.TmMouse.Tick += new System.EventHandler(this.tmMouse_Tick);
             // 
+            // TmTeclat
+            // 
+            this.TmTeclat.Enabled = true;
+            this.TmTeclat.Interval = 20;
+            this.TmTeclat.Tick += new System.EventHandler(this.TmTeclat_Tick);
+            // 
             // FrmMostrarDades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,6 +468,7 @@ namespace MouseRunner
         private System.Windows.Forms.ToolStripMenuItem Configuracio;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem Sortir;
+        private System.Windows.Forms.Timer TmTeclat;
     }
 }
 

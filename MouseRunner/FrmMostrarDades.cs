@@ -51,6 +51,7 @@ namespace MouseRunner
         {
             // Mouse
             TmMouse.Start();
+            TmTeclat.Start();
         }
 
         protected override void SetVisibleCore(bool value)
@@ -72,12 +73,12 @@ namespace MouseRunner
                 Hide();
                 e.Cancel=true;
             }
-            ClTeclat.TancarHook();
             base.OnFormClosing(e);
         }
 
         private void FrmMostrarDades_FormClosed(object sender, FormClosedEventArgs e)
         {
+            ClTeclat.TancarHook();
             Debug.WriteLine("FrmMostrarDades_FormClosed");
         }
 
@@ -209,6 +210,17 @@ namespace MouseRunner
             {
                 TextBoxM.Text=ClApi.GetLastError().ToString();
             }
+        }
+
+        private void TmTeclat_Tick(object sender, EventArgs e)
+        {
+            clDades.Metres=TextBoxM.Text;
+            clDades.NumA=TextBoxA.Text;
+            clDades.NumE=TextBoxE.Text;
+            clDades.NumI=TextBoxI.Text;
+            clDades.NumO=TextBoxO.Text;
+            clDades.NumU=TextBoxU.Text;
+            clDades.Save();
         }
     }
 }

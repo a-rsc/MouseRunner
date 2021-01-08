@@ -15,7 +15,7 @@ namespace MouseRunner.Classes
         private readonly string fileName = "Dades.xml";
         private readonly string path;
 
-        private readonly XmlDocument xmlDoc;
+        private volatile XmlDocument xmlDoc;
         private XmlNode mouseNode, teclatNode;
 
         private string metres = "0"; // valors per defecte - 0
