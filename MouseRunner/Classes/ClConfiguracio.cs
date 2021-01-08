@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -15,7 +16,7 @@ namespace MouseRunner.Classes
         private readonly string fileName = "Configuracio.xml";
         private readonly string path;
         
-        private readonly XmlDocument xmlDoc;
+        private XmlDocument xmlDoc;
         private XmlNode ampladaNode, alturaNode;
 
         private Dictionary<string, string> caracteristiques = new Dictionary<string, string>()
@@ -33,19 +34,23 @@ namespace MouseRunner.Classes
             {
                 xmlDoc.Load(path);
 
-                ampladaNode = xmlDoc.SelectSingleNode("configuracio/pantalla/amplada");
-                if(ampladaNode!=null)
+                ampladaNode=xmlDoc.SelectSingleNode("configuracio/pantalla/amplada");
+                alturaNode=xmlDoc.SelectSingleNode("configuracio/pantalla/altura");
+
+                if(
+                    !string.IsNullOrEmpty(ampladaNode?.InnerText) &&
+                    !string.IsNullOrEmpty(alturaNode?.InnerText)
+                )
                 {
                     Caracteristiques["amplada"]=ampladaNode.InnerText;
-                }
-
-                alturaNode = xmlDoc.SelectSingleNode("configuracio/pantalla/altura");
-                if(alturaNode!=null)
-                {
                     Caracteristiques["altura"]=alturaNode.InnerText;
                 }
+                else
+                {
+                    throw new Exception();
+                }
             }
-            catch(Exception)
+            catch
             {
                 // Si l'arxiu no es trobés el crearia
                 nouXML();
@@ -54,16 +59,44 @@ namespace MouseRunner.Classes
 
         public void Save()
         {
-            ampladaNode.InnerText=Caracteristiques["amplada"];
-            alturaNode.InnerText=Caracteristiques["altura"];
+            try
+            {
+                xmlDoc.Load(path);
 
-            xmlDoc.Save(path);
+                ampladaNode=xmlDoc.SelectSingleNode("configuracio/pantalla/amplada");
+                alturaNode=xmlDoc.SelectSingleNode("configuracio/pantalla/altura");
+
+                if(
+                    !string.IsNullOrEmpty(ampladaNode?.InnerText) &&
+                    !string.IsNullOrEmpty(alturaNode?.InnerText)
+                )
+                {
+                    ampladaNode.InnerText=Caracteristiques["amplada"];
+                    alturaNode.InnerText=Caracteristiques["altura"];
+
+                    xmlDoc.Save(path);
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch
+            {
+                // Si l'arxiu no es trobés el crearia
+                nouXML();
+            }
         }
 
         private void nouXML()
         {
             // Utilitzem objectes de System.XML
-            // XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc = new XmlDocument();
+
+            if(File.Exists(path))
+            {
+                File.Delete(path);
+            }
 
             XmlNode xNodeArrel, xNodePantalla;
             XmlElement xElement;
@@ -95,6 +128,17 @@ namespace MouseRunner.Classes
         }
 
         public string FileName => fileName;
-        public Dictionary<string, string> Caracteristiques { get => caracteristiques; set => caracteristiques=value; }
+        public Dictionary<string, string> Caracteristiques { 
+            get => caracteristiques;
+            set {
+                string pattern = @"^([0-9]{1,3}|1000)$"; // Máximo 1000
+                Regex reg = new Regex(pattern);
+
+                if(reg.IsMatch(ampladaNode.InnerText))
+                {
+                    caracteristiques=value;
+                }
+            }
+        }
     }
 }

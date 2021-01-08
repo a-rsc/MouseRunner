@@ -2,7 +2,7 @@
 <!--Característiques pantalla projectada: amplada i altura (cm)-->
 <configuracio>
   <pantalla>
-    <amplada>100</amplada>
-    <altura>50</altura>
+    <amplada>50</amplada>
+    <altura>30</altura>
   </pantalla>
 </configuracio>
