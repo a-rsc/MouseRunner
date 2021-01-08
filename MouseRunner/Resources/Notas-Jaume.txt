@@ -1,0 +1,25 @@
+﻿Et comento alguns detallets :
+
+**ClConfiguracio
+	Si el fitxer XML no existeix al fer el Save peta perquè no s'han instanciat ampladaNode i alturaNode.
+	Caldria tenir en compte en el Save que aquestes variables poden ser null.
+	També passa amb ClDades
+		
+		PENDENT Només ClDADES
+
+**ClDades			
+	Enlloc de 5 variables NumA,....,NumU seria millor un List<String> o List<Int32>. Això ens permetria, en una possible expansió, tenir un codi més dinàmic.
+	Imagina que la llista de tecles que volem comptar canviés. Les podríem posar en una string, per exemple i generar tants comptadors al List com caràcters a l'string.
+	Fent-ho d'aquesta altra manera, al codi només caldria canviar la inicialització de l'string.
+**FrmMostrarDades
+	Tanques el Hook del teclat dins del procediment OnFormClosing() i això fa que deixi de ser operatiu el comptatge de tecles de les vocals.
+	Potser seria millor que no el tanquessis i mantinguessis el mateix esquema que amb el botó Amagar.
+	També t'hagués facilitat les coses que el Form no tingués els botons de maximitzar i minimitzar i així obligaries a l'usuari a amagar-lo amb el teu botó.
+	Llavors podries treballar amb els events Resize com ja fas amb el VisibleChange si, enlloc de minimitzar-lo/restaurar-lo, el que fas és hide/show.
+	Recorda que en aquesta UF tenim en compte les interfícies d'usuari i una de les opcions que tenim és treure elements que no són necessaris per a l'usuari i que ens poden complicar la programació.
+        Només guardes les dades al Sortir i això fa que si l'aplicació peta es perdin dades. Una solució per a no estar guardant contínuament és utilitzar un Timer que, cada 20 segons per exemple, cridi a ClDades.Save()
+
+Són detallets sense molta transcendència però que et poden ajudar a acabar d'arrodonir la solució.
+Com sempre, moltes gràcies per les teves aportacions que són molt enriquidores!!!
+
+P.D. Et passo les reflexions per privat per a que primer te les miris tu i quan les hagis valorat, si vols, les posem també al general :guiño:
