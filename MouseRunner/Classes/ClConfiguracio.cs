@@ -94,7 +94,7 @@ namespace MouseRunner.Classes
             xmlDoc.Save(path);
         }
 
-        public Dictionary<string, string> Caracteristiques { get => caracteristiques; set => caracteristiques=value; }
         public string FileName => fileName;
+        public Dictionary<string, string> Caracteristiques { get => caracteristiques; set => caracteristiques=value; }
     }
 }

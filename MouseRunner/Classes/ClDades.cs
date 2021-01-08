@@ -21,8 +21,6 @@ namespace MouseRunner.Classes
         private string metres = "0"; // valors per defecte - 0
         private string numA = "0", numE = "0", numI = "0", numO = "0", numU = "0"; // valors per defecte - 0
 
-        public string FileName => fileName;
-
         public ClDades()
         {
             xmlDoc=new XmlDocument();
@@ -52,8 +50,8 @@ namespace MouseRunner.Classes
             }
             catch(Exception)
             {
-                // TODO: Si l'arxiu no es trobés el crearia
-                // nouXML();
+                // Si l'arxiu no es trobés el crearia
+                nouXML();
             }
         }
 
@@ -69,11 +67,28 @@ namespace MouseRunner.Classes
             xmlDoc.Save(path);
         }
 
-        //private void nouXML()
-        //{
+        private void nouXML()
+        {
+            // TODO: Si l'arxiu no es trobés el crearia
 
-        //}
+            /*
+            <?xml version="1.0" encoding="utf-8"?>
+            <dades>
+              <mouse>
+                <metres>36,25</metres>
+              </mouse>
+              <teclat>
+                <A>8</A>
+                <E>7</E>
+                <I>13</I>
+                <O>23</O>
+                <U>22</U>
+              </teclat>
+            </dades>
+            */
+        }
 
+        public string FileName => fileName;
         public string Metres { get => metres; set => metres=value; }
         public string NumA { get => numA; set => numA=value; }
         public string NumE { get => numE; set => numE=value; }
