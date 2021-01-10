@@ -18,8 +18,15 @@ namespace MouseRunner.Classes
         private volatile XmlDocument xmlDoc;
         private XmlNode mouseNode, teclatNode;
 
-        private string metres = "0"; // valors per defecte - 0
-        private string numA = "0", numE = "0", numI = "0", numO = "0", numU = "0"; // valors per defecte - 0
+        private Dictionary<string, string> num = new Dictionary<string, string>()
+        {
+            ["metres"]="0",
+            ["a"]="0",
+            ["e"]="0",
+            ["i"]="0",
+            ["o"]="0",
+            ["u"]="0",
+        };
 
         public ClDades()
         {
@@ -35,16 +42,16 @@ namespace MouseRunner.Classes
                     if(xnode.Name=="mouse")
                     {
                         mouseNode=xnode;
-                        metres=xnode.ChildNodes[0].InnerText;
+                        Num["metres"]=xnode.ChildNodes[0].InnerText;
                     }
                     else if(xnode.Name=="teclat")
                     {
                         teclatNode=xnode;
-                        numA=xnode.ChildNodes[0].InnerText;
-                        numE=xnode.ChildNodes[1].InnerText;
-                        numI=xnode.ChildNodes[2].InnerText;
-                        numO=xnode.ChildNodes[3].InnerText;
-                        numU=xnode.ChildNodes[4].InnerText;
+                        Num["a"]=xnode.ChildNodes[0].InnerText;
+                        Num["e"]=xnode.ChildNodes[1].InnerText;
+                        Num["i"]=xnode.ChildNodes[2].InnerText;
+                        Num["o"]=xnode.ChildNodes[3].InnerText;
+                        Num["u"]=xnode.ChildNodes[4].InnerText;
                     }
                 }
             }
@@ -57,12 +64,12 @@ namespace MouseRunner.Classes
 
         public void Save()
         {
-            mouseNode.ChildNodes[0].InnerText=metres;
-            teclatNode.ChildNodes[0].InnerText=numA;
-            teclatNode.ChildNodes[1].InnerText=numE;
-            teclatNode.ChildNodes[2].InnerText=numI;
-            teclatNode.ChildNodes[3].InnerText=numO;
-            teclatNode.ChildNodes[4].InnerText=numU;
+            mouseNode.ChildNodes[0].InnerText=Num["metres"];
+            teclatNode.ChildNodes[0].InnerText=Num["a"];
+            teclatNode.ChildNodes[1].InnerText=Num["e"];
+            teclatNode.ChildNodes[2].InnerText=Num["i"];
+            teclatNode.ChildNodes[3].InnerText=Num["o"];
+            teclatNode.ChildNodes[4].InnerText=Num["u"];
 
             xmlDoc.Save(path);
         }
@@ -88,12 +95,8 @@ namespace MouseRunner.Classes
             */
         }
 
-        public string FileName => fileName;
-        public string Metres { get => metres; set => metres=value; }
-        public string NumA { get => numA; set => numA=value; }
-        public string NumE { get => numE; set => numE=value; }
-        public string NumI { get => numI; set => numI=value; }
-        public string NumO { get => numO; set => numO=value; }
-        public string NumU { get => numU; set => numU=value; }
+        private string FileName => fileName;
+
+        public Dictionary<string, string> Num { get => num; set => num=value; }
     }
 }

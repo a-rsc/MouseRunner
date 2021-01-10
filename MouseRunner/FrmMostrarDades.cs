@@ -32,12 +32,12 @@ namespace MouseRunner
             clConfiguracio = new ClConfiguracio();
             clDades = new ClDades();
 
-            TextBoxM.Text=clDades.Metres;
-            TextBoxA.Text=clDades.NumA;
-            TextBoxE.Text=clDades.NumE;
-            TextBoxI.Text=clDades.NumI;
-            TextBoxO.Text=clDades.NumO;
-            TextBoxU.Text=clDades.NumU;
+            TextBoxM.Text=clDades.Num["metres"];
+            TextBoxA.Text=clDades.Num["a"];
+            TextBoxE.Text=clDades.Num["e"];
+            TextBoxI.Text=clDades.Num["i"];
+            TextBoxO.Text=clDades.Num["o"];
+            TextBoxU.Text=clDades.Num["u"];
 
             // Mouse
             posMouse=new ClApi();
@@ -108,12 +108,12 @@ namespace MouseRunner
         private void Sortir_Click(object sender, EventArgs e)
         {
             allowClose=true;
-            clDades.Metres=TextBoxM.Text;
-            clDades.NumA=TextBoxA.Text;
-            clDades.NumE=TextBoxE.Text;
-            clDades.NumI=TextBoxI.Text;
-            clDades.NumO=TextBoxO.Text;
-            clDades.NumU=TextBoxU.Text;
+            clDades.Num["metres"]=TextBoxM.Text;
+            clDades.Num["a"]=TextBoxA.Text;
+            clDades.Num["e"]=TextBoxE.Text;
+            clDades.Num["i"]=TextBoxI.Text;
+            clDades.Num["o"]=TextBoxO.Text;
+            clDades.Num["u"]=TextBoxU.Text;
             clDades.Save();
             Application.Exit();
         }
@@ -214,12 +214,12 @@ namespace MouseRunner
 
         private void TmTeclat_Tick(object sender, EventArgs e)
         {
-            clDades.Metres=TextBoxM.Text;
-            clDades.NumA=TextBoxA.Text;
-            clDades.NumE=TextBoxE.Text;
-            clDades.NumI=TextBoxI.Text;
-            clDades.NumO=TextBoxO.Text;
-            clDades.NumU=TextBoxU.Text;
+            clDades.Num["metres"]=TextBoxM.Text;
+            clDades.Num["a"]=TextBoxA.Text;
+            clDades.Num["e"]=TextBoxE.Text;
+            clDades.Num["i"]=TextBoxI.Text;
+            clDades.Num["o"]=TextBoxO.Text;
+            clDades.Num["u"]=TextBoxU.Text;
             clDades.Save();
         }
     }
