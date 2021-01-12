@@ -10,8 +10,7 @@ using System.Xml;
 
 namespace MouseRunner.Classes
 {
-    // Only one instance
-    public sealed class ClConfiguracio
+    public class ClConfiguracio
     {
         private readonly string fileName = "Configuracio.xml";
         private readonly string path;
